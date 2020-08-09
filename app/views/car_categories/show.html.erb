@@ -1,0 +1,6 @@
+<h1><%= @car_category.name %></h1>
+<span><%= number_to_currency @car_category.daily_rate %></span>
+<span><%= number_to_currency @car_category.car_insurance %></span>
+<span><%= number_to_currency @car_category.third_party_insurance %></span>
+
+<a href="<%= car_categories_path %>">Voltar</a>
