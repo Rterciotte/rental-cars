@@ -4,7 +4,6 @@ class SubsidiariesController < ApplicationController
     end
 
     def show
-        render :file => 'subsidiaries/show.html'
         @subsidiary = Subsidiary.find(params[:id])
     end
 end

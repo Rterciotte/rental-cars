@@ -1,5 +1,5 @@
 <% @subsidiaries.each do |subsidiary| %>
-   <%= link_to subsidiary.name, subsidiaries_path(id: subsidiary.id) %>
+   <%= link_to subsidiary.name, subsidiary_path(id: subsidiary.id) %>
 <% end %>
 
 <% if @subsidiaries.empty? %>
