@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Admin edits manufacturer' do
+feature 'Admin edits car category' do
   scenario 'successfully' do
     CarCategory.create!(name: 'Top', daily_rate: 105.5, car_insurance: 58.5,
                         third_party_insurance: 10.5)
@@ -46,7 +46,7 @@ feature 'Admin edits manufacturer' do
                         third_party_insurance: 8.5)
 
     visit root_path
-    click_on 'Fabricantes'
+    click_on 'Categorias'
     click_on 'Flex'
     click_on 'Editar'
     fill_in 'Nome', with: 'Top'

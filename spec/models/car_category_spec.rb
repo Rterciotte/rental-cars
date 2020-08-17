@@ -23,10 +23,12 @@ describe CarCategory, type: :model do
 
       expect(category.errors[:name]).to include('já está em uso')
     end
+
     it 'name uniqueness is not case sensitive' do
-      CarCategory.create!(name: 'Top', daily_rate: 105.5, car_insurance: 58.5,
-      third_party_insurance: 10.5)
-      category = CarCategory.new(name: 'top')
+      CarCategory.create!(name: 'Top da Galaxia',
+                          daily_rate: 105.5, car_insurance: 58.5,
+                          third_party_insurance: 10.5)
+      category = CarCategory.new(name: 'top da galaxia')
 
       category.valid?
 

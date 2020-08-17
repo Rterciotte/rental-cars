@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Admin register manufacturer' do
+feature 'Admin register car categories' do
   scenario 'from index page' do
     visit root_path
     click_on 'Categorias'

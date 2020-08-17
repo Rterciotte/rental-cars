@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  root to: "home#index"
-  
-  resources :car_categories, only: [:index, :show, :new, :create, :edit, :update]
-  resources :subsidiaries
+  root to: 'home#index'
+
+  resources :car_categories
+  resources :subsidiaries, only: [:index]
+  resources :car_models, only: [:index, :show, :new, :create]
 end
