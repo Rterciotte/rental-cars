@@ -1,9 +1,23 @@
 require 'rails_helper'
 
 feature 'Admin deletes car category' do
+  scenario 'must be signed in' do
+    visit root_path
+    click_on 'Categorias'
+
+    expect(current_path).to eq new_user_session_path
+    expect(page).to have_content 'Para continuar, efetue login ou registre-se.'
+  end
+
   scenario 'successfully' do
+    user  = User.create!(name: 'Rogério Terciotte', 
+                email: 'rogerio@email.com', password: '12345678')
+
+                  
     CarCategory.create!(name: 'Top', daily_rate: 105.5, car_insurance: 58.5,
                         third_party_insurance: 10.5)
+
+    user_login(user)                
 
     visit root_path
     click_on 'Categorias'

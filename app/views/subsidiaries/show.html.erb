@@ -1,7 +1,11 @@
 
 <h1><%= @subsidiary.name %></h1>
-<span><%= @subsidiary.cnpj %></span>
-<span><%= @subsidiary.address %></span>
 
+<dl>
+    <dt><%= Subsidiary.human_attribute_name :cnpj %></dt>
+    <dd><%= @subsidiary.cnpj %></dd>
+    <dt><%= Subsidiary.human_attribute_name :address %></dt>
+    <dd><%= @subsidiary.address %></dd>
+</dl>
 
 <a href="<%= subsidiaries_path %>">Voltar</a>
