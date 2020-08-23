@@ -1,4 +1,5 @@
 class SubsidiariesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @subsidiaries = Subsidiary.all
   end
@@ -12,14 +13,13 @@ class SubsidiariesController < ApplicationController
   end
 
   def create
-    subsidiary_params = params.require(:subsidiary).permit(:name, :cnpj, :address)
     @subsidiary = Subsidiary.new(subsidiary_params)
     if @subsidiary.save
       redirect_to @subsidiary, notice: 'Filial criada com sucesso!'
     else
       render :new
     end 
-  
+  end
     private 
     
     def subsidiary_params 
