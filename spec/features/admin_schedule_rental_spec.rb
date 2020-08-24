@@ -35,7 +35,19 @@ feature 'Admin schedule rental' do
         expect(page).to have_content('R$ 600,00')
         expect(page).to have_content('Agendamento realizado com sucesso')
     end
-    xscenario 'must fill in all fields' do
+    scenario 'must fill in all fields' do
+        user  = User.create!(name: 'Rogério Terciotte', 
+                            email: 'rogerio@email.com', password: '12345678')
+        user_login(user)    
+        visit root_path
+        click_on 'Locações'
+        click_on 'Agendar nova locação'
+        click_on 'Agendar'
+
+        expect(page).to have_content('Data de início não pode ficar em branco')
+        expect(page).to have_content('Data de término não pode ficar em branco')
+        expect(page).to have_content('Cliente não pode ficar em branco')
+        expect(page).to have_content('Categoria de carro não pode ficar em branco')
     end
 
     scenario 'must be logged in to view rentals' do
@@ -45,18 +57,16 @@ feature 'Admin schedule rental' do
     end
 
     scenario 'must be logged in to view rentals list' do
-        visit rentals_path
-
-        CarCategory.create!(name: 'A', car_insurance: 100, daily_rate: 100, 
+        car_category = CarCategory.create!(name: 'A', car_insurance: 100, daily_rate: 100, 
                             third_party_insurance: 100)
-        Client.create!(name: 'Fulano Sicrano', cpf: '512.129.580-57', 
+        client = Client.create!(name: 'Fulano Sicrano', cpf: '512.129.580-57', 
                         email: 'teste@cliente.com')
         user = User.create!(name: 'Lorem Ipsum', email: 'lorem@ipsum.com', 
                             password: '12345678')
         rental = Rental.create!(start_date: Date.current, end_date: 2.days.from_now,
                                 client: client, user: user, car_category: car_category)
 
-        visit rental_path
+        visit rentals_path
 
         expect(current_path).to eq new_user_session_path
 

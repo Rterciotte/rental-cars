@@ -1,19 +1,23 @@
 class RentalsController < ApplicationController
     before_action :authenticate_user!
     def index
+       
+    end
+
+    def show
         @rental = Rental.find(params[:id])
     end
 
     def new
         @rental = Rental.new
         @clients = Client.all
-        @car_categories = CarCategories.all
+        @car_categories = CarCategory.all
     end
 
     def create
         @rental = Rental.new(rental_params)
         @rental.user = current_user
-        @rental = save!
+        @rental.save!
         redirect_to @rental, notice: 'Agendamento realizado com sucesso'                                   
     end
 

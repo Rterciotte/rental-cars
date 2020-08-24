@@ -1,4 +1,4 @@
-<% form_with model @rental, local: true do |f| %>
+<%= form_with model: @rental, local: true do |f| %>
     <%= f.label :start_date, 'Data de início' %>
     <%= f.date_field :start_date %>
     <%= f.label :end_date, 'Data de término' %>
